@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>"Школьная планиметрическая лаборатория"</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+                    <a href="index.html" class="header__link">
+                        <img class="header__logo" src="./assets/icons/logo.png" alt="triangle">
+                    </a>
+                    <nav class="header__list">
+                        <ul class="menu">
+                            <li class="menu__item">
+                                <a href="index.html" class="menu__item-link">
+                                    На главную
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#workplace" class="menu__item-link">
+                                    Построение
+                                </a>
+                            </li>
+                            <li class="menu__item">
+                                <a href="#info" class="menu__item-link">
+                                    Информация
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>  
+        </header>
+        <section class="try">
+            <div class="container">
+                <div class="try__inner">
+                    <div class="try__box">
+                        <h1 class="try__title">
+                            Школьная планиметрическая лаборатория
+                        </h1>
+                        <p class="try__text">
+                            На данном сайте вы можете ознакомиться с простейшими анимациями построения треугольников по разным входным параметрам:
+                        </p>
+                        <p class="try__item">
+                            по трем сторонам
+                        </p>
+                        <p class="try__item">
+                            по двум сторонам и углу между ними
+                        </p>
+                        <p class="try__item">
+                            по трем углам
+                        </p>
+                        <p class="try__item">
+                            по высоте и двум сторонам
+                        </p>
+                        <a href="#workplace" class="try__button-link">
+                            <div class="try__button">
+                                ПОПРОБОВАТЬ
+                            </div>
+                        </a>
+                    </div>
+                    <div class="try__picture">  
+                        <img src="/assets/img/picture.png" alt="picture of geometry">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="workplace" id="workplace">
+            <div class="container">
+                <div class="workplace__inner">
+                    <div class="workplace__choice">
+                        <h2 class="workplace__title">
+                            Построение
+                        </h2>
+                        <p class="workplace__text">
+                            Выберите тип вводимых параметров:
+                        </p>
+                        <div class="workplace__item">
+                            <label for="triangleChoice1" class="workplace__container">
+                                <input type="radio" id="triangleChoice1" name="triangle" value="3sides" onclick="toggleSet(this)">
+                                три стороны
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice2" class="workplace__container">
+                                <input type="radio" id="triangleChoice2" name="triangle" value="2sides&angle" onclick="toggleSet(this)">
+                                две стороны и угол
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice3" class="workplace__container">
+                                <input type="radio" id="triangleChoice3" name="triangle" value="3angles" onclick="toggleSet(this)">
+                                три угла
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice4" class="workplace__container">
+                                <input type="radio" id="triangleChoice4" name="triangle" value="height&2sides" onclick="toggleSet(this)">
+                                высота и две стороны
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace_place" id="workplace_place"></div>
+                        <input type="submit" id="btn" value="ПОКАЗАТЬ">
+                    </div>
+                    <div class="card">
+                        <canvas id="plot" class="plot"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info" id="info">
+            <div class="container">
+                <br class="info__inner">
+                    <h2 class="info__title">
+                        Информация
+                    </h2>
+                    <p class="info__text">
+                        Этот сайт был сделан в ходе выполнения курсовой работы на тему “Создание сайта «школьная планиметрическая лаборатория» с анимацией (HTML5), визуализирующей построение треугольника по трем элементам которые интерактивно задаются (3 стороны, 2 стороны и угол, 2 угла и сторона, высота и 2 стороны и т.п.).”, научным руководителем которой является Барвенов Сергей Александрович.
+                    </p>
+                    <p class="info__text">
+                        Автор: студент 2-ого курса 9 группы Шидловский Матвей Анатольевич</p>
+                        09.05.2022
+                    </p>
+                </div>
+            </div>
+        </section>
+        <!-- <div class="container" id="container">
+            <div class="choice">
+                <div class="item">
+                    <input type="radio" id="triangleChoice1"
+                    name="triangle" value="3sides" onclick="toggleSet(this)">
+                    <label for="triangleChoice1">3 стороны</label>
+                </div>
+                <div class="item">
+                    <input type="radio" id="triangleChoice2"
+                    name="triangle" value="2sides&angle" onclick="toggleSet(this)">
+                    <label for="triangleChoice2">2 стороны и угол</label>
+                </div>
+                <div class="item">
+                    <input type="radio" id="triangleChoice3"
+                 name="triangle" value="3angles" onclick="toggleSet(this)">
+                    <label for="triangleChoice3">3 угла</label>
+                </div>
+                <div class="place" id="place">
+    
+                </div>
+                <input type="submit" id="btn" value="Показать"><br>
+            </div> -->
+            
+            <!-- <div class="card">
+                <canvas id="plot"></canvas>
+            </div>
+        </div> -->
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>

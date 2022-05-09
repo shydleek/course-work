@@ -1,0 +1,275 @@
+@font-face {
+    font-family: "Moula";  
+    src: url("../assets/fonts/moula-regular.ttf") format("truetype"); 
+    font-style: normal; 
+    font-weight: normal;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    padding: 0;
+    margin: 0;
+    font-weight: 400;
+    font-family: "Moula";
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+}
+
+legend {
+    padding: 0;
+    display: table;
+}
+
+fieldset {
+    border: 0;
+    padding: 0.01em 0 0 0;
+    margin: 0;
+    min-width: 0;
+}
+
+body {
+    background-color: #84CAEE;
+    font-family: "Moula";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    padding: 40px;
+    color: #4A495D;
+}
+
+.wrapper {
+    margin: 0 auto;
+    padding: 20px 40px;
+    max-width: 1200px;
+    background-color: #fff;
+    border-radius: 60px;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+input::placeholder{
+    color: #0D87B4;
+    opacity: 50%;
+    font-family: "Moula";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+}
+
+input[type="text"] {
+    color: #4A495D;
+    padding: 5px 10px;
+    font-family: "Moula";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+    border-radius: 60px;
+    border: 1px solid #0D87B4;
+}
+
+input[type="submit"] {
+    background-color: #0D87B4;
+    color: #fff;
+    font-family: "Moula";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 17px;
+    letter-spacing: 0.06em;
+    padding: 10px 62px;
+    border-radius: 60px;
+    border: 1px solid #0D87B4;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover{
+    color:#ccc;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header {
+    padding-bottom: 20px;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu__item {
+    margin-left: 60px;
+}
+
+.menu__item-link{
+    border-bottom: 1px solid transparent;
+}
+
+.menu__item-link:hover{
+    border-bottom: 1px solid #4A495D;
+    transition: all 0.5s;
+}
+
+.try__inner {
+    display: flex;
+}
+
+.try__box {
+    padding-top: 50px;
+}
+
+.try__title {
+    font-family: 'Moula';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 39px;
+    letter-spacing: 0.06em;
+
+    color: #4A495D;
+}
+
+.try__item {
+    padding-left: 26px;
+    position: relative;
+}
+
+.try__item::before {
+    content: url(../assets/icons/Ok.png);
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    top: 2px;
+    left: 0;
+}
+
+.try {
+    padding-bottom: 100px;
+}
+
+.try__button {
+    color: #fff;
+    background-color: #0D87B4;
+    max-width: 206px;
+    border-radius: 60px;
+    padding: 11px 42px;
+}
+
+.try__button:hover{
+    color:#ccc;
+}
+
+.try__button-link{
+    border-radius: 60px; 
+}
+
+.workplace__inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.plot {
+    /* border: 1px solid black; */
+    background: url(../assets/img/canvas.png) repeat center;
+}
+
+.workplace__container {
+    display: block;
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.workplace__title {
+    font-family: 'Moula';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 32px;
+    letter-spacing: 0.06em;
+}
+
+.workplace__container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    border: 1px solid #878787;
+    border-radius: 50%;
+}
+
+.workplace__container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.workplace__container input:checked ~ .checkmark {
+    background-color: #0D87B4;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.workplace__container input:checked ~ .checkmark:after {
+    display: block;
+}
+  
+.workplace {
+    padding-bottom: 100px;
+}
+
+.info__title{
+    font-family: 'Moula';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 32px;
+    letter-spacing: 0.06em;
+}
