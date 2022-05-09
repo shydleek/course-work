@@ -95,7 +95,7 @@ input[type="text"] {
     border: 1px solid #0D87B4;
 }
 
-input[type="submit"] {
+.btn {
     background-color: #0D87B4;
     color: #fff;
     font-family: "Moula";
@@ -107,10 +107,10 @@ input[type="submit"] {
     padding: 10px 62px;
     border-radius: 60px;
     border: 1px solid #0D87B4;
-    cursor: pointer;
+    cursor: not-allowed;
 }
 
-input[type="submit"]:hover{
+.btn:hover{
     color:#ccc;
 }
 
