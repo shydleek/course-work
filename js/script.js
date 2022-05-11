@@ -153,9 +153,9 @@ function toggleSet(radio) {
         case "height&2sides":
             template = `
             <fieldset id="height&2sides" class="workplace__inputs">
-                <input type="text" id="height" required><br>
-                <input type="text" id="sideA" required><br>
-                <input type="text" id="sideB" required><br>
+                <input type="text" id="height" placeholder="2.4" required><br>
+                <input type="text" id="sideA" placeholder="3" required><br>
+                <input type="text" id="sideB" placeholder="4" required><br>
             </fieldset>
             `
             ;
@@ -181,10 +181,10 @@ btn.onclick = () => {
             animation2sidesAndAngle(ctx);
             break;
         case "2angles&side":
-            // animation2anglesAndSide(ctx);
+            animation2anglesAndSide(ctx);
             break;
         case "height&2sides":
-            // animationHeight&2sides(ctx);
+            animationHeightAnd2sides(ctx);
             break;
         default:
             break;
@@ -235,16 +235,16 @@ function alertTriangle(){
     alert("Вы ввели некорректное значение! Нарушено правило существования треуголников!");
 }
 
-function isNotValid3sides(a, b, c) {
-    return typeof a !== 'number' && typeof b !== 'number' && typeof c !== 'number' && a <= 0 && b <= 0 && c <= 0;
+function isValid3sides(a, b, c) {
+    return typeof a === 'number' && typeof b === 'number' && typeof c === 'number' && a > 0 && b > 0 && c > 0;
 }
 
 function animation3sides(ctx) {
-    const a = document.getElementById("sideA").value;
-    const b = document.getElementById("sideB").value;
-    const c = document.getElementById("sideC").value;
+    const a = +document.getElementById("sideA").value;
+    const b = +document.getElementById("sideB").value;
+    const c = +document.getElementById("sideC").value;
     
-    if (isNotValid3sides(a, b, c)) {
+    if (!isValid3sides(a, b, c)) {
         alertValue();
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
@@ -282,16 +282,16 @@ function animation3sides(ctx) {
     }
 }
 
-function isNotValid2sidesAndAngle(a, b, angle) {
-    return typeof a !== 'number' && typeof b !== 'number' && typeof angle !== 'number' && a <= 0 && b <= 0 && (angle <= 0 || angle >= 180);
+function isValid2sidesAndAngle(a, b, angle) {
+    return typeof a === 'number' && typeof b === 'number' && typeof angle === 'number' && a > 0 && b > 0 && angle > 0 && angle < 180;
 }
 
 function animation2sidesAndAngle(ctx) {
-    const a = document.getElementById("sideA").value;
-    const b = document.getElementById("sideB").value;
-    const angle = document.getElementById("angleAB").value;
+    const a = +document.getElementById("sideA").value;
+    const b = +document.getElementById("sideB").value;
+    const angle = +document.getElementById("angleAB").value;
 
-    if (isNotValid2sidesAndAngle(a, b, angle)) {
+    if (!isValid2sidesAndAngle(a, b, angle)) {
         alertValue();
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
@@ -319,53 +319,107 @@ function animation2sidesAndAngle(ctx) {
         const centeredPoints = findCenteredPoints(initialPoints);
         //console.log(fixedPoints);
         animate(centeredPoints, createCoords(centeredPoints), 1, ctx);
-
     } 
     else {
         alertTriangle();
     }
 }
 
-// function isNotValid2anglesAndSide(angleA, angleB, sideAB) {
-//     return typeof angleA !== 'number' && typeof angleB !== 'number' && typeof angleC !== 'number' && (angleA + angleB + angleC) !== 180;
-// }
+function isValid2anglesAndSide(angleA, angleB, sideAB) {
+    return typeof angleA === 'number' && typeof angleB === 'number' && typeof sideAB === 'number' && (angleA > 0 && angleA < 180 && angleB > 0 && angleB < 180 && (angleA + angleB) < 180) && sideAB > 0;
+}
 
-// function animation2anglesAndSide(ctx){
-//     const angleA = document.getElementById("angleA").value;
-//     const angleB = document.getElementById("angleB").value;
-//     const sideAB = document.getElementById("sideAB").value;
+function animation2anglesAndSide(ctx){
+    
+    const angleA = +document.getElementById("angleA").value;
+    const angleB = +document.getElementById("angleB").value;
+    const sideAB = +document.getElementById("sideAB").value;
+    if (!isValid2anglesAndSide(angleA, angleB, sideAB)) {
+        alertValue();
+        document.getElementById("angleA").value = '';
+        document.getElementById("angleB").value = '';
+        document.getElementById("sideAB").value = '';
+        return 
+    }
+    const angleAInRad = (angleA * Math.PI) / 180;
+    const angleBInRad = (angleB * Math.PI) / 180;
+    const a = sideAB;
+    const b = a * Math.sin(angleBInRad) / Math.sin(angleAInRad);
+    console.log(b);
+    const angleC = 180 - angleA - angleB;
+    console.log(angleC);
+    const angleCInRad = (angleC * Math.PI) / 180;
+    const c = a * Math.sin(angleCInRad) / Math.sin(angleAInRad);
+    console.log(c);
+    const maxValue = findMaxValue(a, b, c);
+    const coef = Math.floor(DPI_HEIGHT / (2 * maxValue));
+    const A = coef * a;
+    const B = coef * b;
+    const C = coef * c;
 
-//     if (isNotValid2anglesAndSide(angleA, angleB, sideAB)) {
-//         alertValue();
-//         document.getElementById("angleA").value = '';
-//         document.getElementById("angleB").value = '';
-//         document.getElementById("sideAB").value = '';
-//         return 
-//     }
+    if (isTriangleExist(A, B, C)) {
+        const x = Math.floor(B * Math.cos(alpha));
+        const y = Math.floor(B * Math.sin(alpha));
+        const initialPoints = [
+            { x: WIDTH + A, y: HEIGHT },
+            { x: WIDTH, y: HEIGHT }, // находится по центру экрана
+            { x: WIDTH + x, y: HEIGHT - y },
+        ];
 
-//     const angleInRad = (angle * Math.PI) / 180;
-//     const c = Math.floor(Math.sqrt(a ** 2 + b ** 2 - 2 * a * b * Math.cos(angleInRad)));
-//     const maxValue = findMaxValue(a, b, c);
-//     const coef = Math.floor(DPI_HEIGHT / (2 * maxValue));
-//     const A = coef * a;
-//     const B = coef * b;
-//     const C = coef * c;
+        const centeredPoints = findCenteredPoints(initialPoints);
+        //console.log(fixedPoints);
+        animate(centeredPoints, createCoords(centeredPoints), 1, ctx);
+    } 
+    else {
+        alertTriangle();
+    }
+}
 
-//     if (isTriangleExist(A, B, C)) {
-//         const x = Math.floor(B * Math.cos(angleInRad));
-//         const y = Math.floor(B * Math.sin(angleInRad));
-//         const initialPoints = [
-//             { x: WIDTH + A, y: HEIGHT },
-//             { x: WIDTH, y: HEIGHT }, // находится по центру экрана
-//             { x: WIDTH + x, y: HEIGHT - y },
-//         ];
+function isValidHeightAnd2sides(height, sideA, sideB) {
+    return typeof height === 'number' && typeof sideA === 'number' && typeof sideB === 'number' && height > 0 && sideA > 0 && sideB > 0;
+}
 
-//         const centeredPoints = findCenteredPoints(initialPoints);
-//         //console.log(fixedPoints);
-//         animate(centeredPoints, createCoords(centeredPoints), 1, ctx);
+function animationHeightAnd2sides(ctx){
+    
+    const height = +document.getElementById("height").value;
+    const a = +document.getElementById("sideA").value;
+    const b = +document.getElementById("sideB").value;
+    if (!isValidHeightAnd2sides(height, a, b)) {
+        console.log(height)
+        alertValue();
+        document.getElementById("height").value = '';
+        document.getElementById("sideA").value = '';
+        document.getElementById("sideB").value = '';
+        return 
+    }
+    
+    const x = Math.sqrt(b ** 2 - height ** 2);
+    const c = Math.sqrt(a ** 2 - height ** 2) + x;
+    const maxValue = findMaxValue(a, b, c);
+    const coef = Math.floor(DPI_HEIGHT / (2 * maxValue));
+    const A = coef * a;
+    const B = coef * b;
+    const C = coef * c;
 
-//     } 
-//     else {
-//         alertTriangle();
-//     }
-// }
+    if (isTriangleExist(A, B, C)) {
+        const p = (A + B + C) / 2;
+        const S = Math.sqrt(p * (p - A) * (p - B) * (p - C));
+        const SinA = (2 * S) / (A * B);
+        const alpha = Math.asin(SinA);
+
+        const x = Math.floor(B * Math.cos(alpha));
+        const y = Math.floor(B * Math.sin(alpha));
+        const initialPoints = [
+            { x: WIDTH + A, y: HEIGHT },
+            { x: WIDTH, y: HEIGHT }, // находится по центру экрана
+            { x: WIDTH + x, y: HEIGHT - y },
+        ];
+
+        const centeredPoints = findCenteredPoints(initialPoints);
+        //console.log(fixedPoints);
+        animate(centeredPoints, createCoords(centeredPoints), 1, ctx);
+    } 
+    else {
+        alertTriangle();
+    }
+}
