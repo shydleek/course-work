@@ -608,7 +608,7 @@ function animationMedianAnd2sides(ctx) {
 }
 
 function isValidBisectorAnd2sides(bisector, b, c) {
-    return typeof bisector === 'number' && typeof b === 'number' && typeof c === 'number' && bisector > MIN_VALUE && с > MIN_VALUE && с < MAX_VALUE && b > MIN_VALUE && b < MAX_VALUE && bisector < с && bisector < b;
+    return typeof bisector === 'number' && typeof b === 'number' && typeof c === 'number' && bisector > MIN_VALUE && c > MIN_VALUE && c < MAX_VALUE && b > MIN_VALUE && b < MAX_VALUE && bisector < c && bisector < b;
 }
 
 function animationBisectorAnd2sides(ctx) {
