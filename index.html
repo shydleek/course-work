@@ -48,16 +48,16 @@
                             На данном сайте вы можете ознакомиться с простейшими анимациями построения треугольников по разным входным параметрам:
                         </p>
                         <p class="try__item">
-                            по трем сторонам
+                            по трем сторонам;
                         </p>
                         <p class="try__item">
-                            по двум сторонам и углу между ними
+                            по двум сторонам и углу между ними;
                         </p>
                         <p class="try__item">
-                            по трем углам
+                            по двум углам и стороне;
                         </p>
                         <p class="try__item">
-                            по высоте и двум сторонам
+                            и другие.
                         </p>
                         <a href="#workplace" class="try__button-link">
                             <div class="try__button">
@@ -109,6 +109,35 @@
                                 <span class="checkmark"></span>
                             </label>
                         </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice5" class="workplace__container">
+                                <input type="radio" id="triangleChoice5" name="triangle" value="median&2sides" onclick="toggleSet(this); ">
+                                медиана и две стороны
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice6" class="workplace__container">
+                                <input type="radio" id="triangleChoice6" name="triangle" value="bisector&2sides" onclick="toggleSet(this); ">
+                                биссектриса и две стороны
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice7" class="workplace__container">
+                                <input type="radio" id="triangleChoice7" name="triangle" value="radius&2angles" onclick="toggleSet(this); ">
+                                радиус описанной окружности и два угла
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="workplace__item">
+                            <label for="triangleChoice8" class="workplace__container">
+                                <input type="radio" id="triangleChoice8" name="triangle" value="radius&2sides" onclick="toggleSet(this); ">
+                                радиус описанной окружности и две стороны
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        
                         <div class="workplace_place" id="workplace_place"></div>
                         <input type="submit" class="btn" id="btn" value="ПОКАЗАТЬ" disabled>
                     </div>
@@ -134,33 +163,6 @@
                 </div>
             </div>
         </section>
-        <!-- <div class="container" id="container">
-            <div class="choice">
-                <div class="item">
-                    <input type="radio" id="triangleChoice1"
-                    name="triangle" value="3sides" onclick="toggleSet(this)">
-                    <label for="triangleChoice1">3 стороны</label>
-                </div>
-                <div class="item">
-                    <input type="radio" id="triangleChoice2"
-                    name="triangle" value="2sides&angle" onclick="toggleSet(this)">
-                    <label for="triangleChoice2">2 стороны и угол</label>
-                </div>
-                <div class="item">
-                    <input type="radio" id="triangleChoice3"
-                 name="triangle" value="3angles" onclick="toggleSet(this)">
-                    <label for="triangleChoice3">3 угла</label>
-                </div>
-                <div class="place" id="place">
-    
-                </div>
-                <input type="submit" id="btn" value="Показать"><br>
-            </div> -->
-            
-            <!-- <div class="card">
-                <canvas id="plot"></canvas>
-            </div>
-        </div> -->
     </div>
     <script src="js/script.js"></script>
 </body>
