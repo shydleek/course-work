@@ -6,11 +6,12 @@ const MAX_VALUE = 100000;
 const MIN_VALUE = 0;
 const MAX_ANGLE = 180;
 const MIN_ANGLE = 0;
+const MEDIA_WIDTH = 800;
 
 const canvas = document.getElementById("plot");
 const ctx = canvas.getContext("2d");
 
-if (window.innerWidth < 800) {
+if (window.innerWidth < MEDIA_WIDTH) {
     canvas.style.width = "100%";
     canvas.style.height = "100%";
     canvas.width = DPI_WIDTH;
