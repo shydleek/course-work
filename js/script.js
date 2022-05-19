@@ -10,10 +10,19 @@ const MIN_ANGLE = 0;
 const canvas = document.getElementById("plot");
 const ctx = canvas.getContext("2d");
 
-canvas.style.width = WIDTH + "px";
-canvas.style.height = HEIGHT + "px";
-canvas.width = DPI_WIDTH;
-canvas.height = DPI_HEIGHT;
+if (window.innerWidth < 800) {
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.width = DPI_WIDTH;
+    canvas.height = DPI_HEIGHT;
+} else {
+    canvas.style.width = WIDTH + "px";
+    canvas.style.height = HEIGHT + "px";
+    canvas.width = DPI_WIDTH;
+    canvas.height = DPI_HEIGHT;
+}
+
+console.log(window.innerWidth);
 
 function findMaxPoints(points) {
     let max_x = points[0].x;
@@ -382,7 +391,7 @@ function animation2sidesAndAngle(ctx) {
     }
 
     const angleInRad = (angle * Math.PI) / MAX_ANGLE;
-    const c = Math.floor(Math.sqrt(a ** 2 + b ** 2 - 2 * a * b * Math.cos(angleInRad)));
+    const c = Math.sqrt(a ** 2 + b ** 2 - 2 * a * b * Math.cos(angleInRad));
 
     if (c > MAX_VALUE || c < MIN_VALUE) {
         alertCalculation(c);
@@ -541,7 +550,7 @@ function animationHeightAnd2sides(ctx){
 }
 
 function isValidMedianAnd2sides(median, b, c) {
-    return typeof median === 'number' && typeof b === 'number' && typeof c === 'number' && median > MIN_VALUE && с > MIN_VALUE && с < MAX_VALUE && b > MIN_VALUE && b < MAX_VALUE && median < с && median < b;
+    return typeof median === 'number' && typeof b === 'number' && typeof c === 'number' && median > MIN_VALUE && c > MIN_VALUE && c < MAX_VALUE && b > MIN_VALUE && b < MAX_VALUE && median < c && median < b;
 }
 
 function animationMedianAnd2sides(ctx) {
@@ -559,7 +568,7 @@ function animationMedianAnd2sides(ctx) {
     }
     
     const a = Math.sqrt(2 * (b ** 2 + c ** 2) - 4 * median ** 2);
-
+    console.log(a);
     if (a > MAX_VALUE || a < MIN_VALUE) {
         alertCalculation(a);
 
@@ -579,7 +588,7 @@ function animationMedianAnd2sides(ctx) {
         const S = Math.sqrt(p * (p - A) * (p - B) * (p - C));
         const SinA = (2 * S) / (A * B);
         const alpha = Math.asin(SinA);
-
+        console.log(alpha);
         const x = Math.floor(B * Math.cos(alpha));
         const y = Math.floor(B * Math.sin(alpha));
         const initialPoints = [
