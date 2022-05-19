@@ -18,14 +18,17 @@ canvas.height = DPI_HEIGHT;
 function findMaxPoints(points) {
     let max_x = points[0].x;
     let max_y = points[0].y;
+
     for (let point of points) {
         if (max_x < point.x) {
             max_x = point.x;
         }
+
         if (max_y < point.y) {
             max_y = point.y;
         }
     }
+
     return {
         x: max_x,
         y: max_y,
@@ -35,14 +38,17 @@ function findMaxPoints(points) {
 function findMinPoints(points) {
     let min_x = points[0].x;
     let min_y = points[0].y;
+
     for (let point of points) {
         if (min_x > point.x) {
             min_x = point.x;
         }
+
         if (min_y > point.y) {
             min_y = point.y;
         }
     }
+
     return {
         x: min_x,
         y: min_y,
@@ -58,7 +64,7 @@ function createCoords(points) {
         const dx = p1.x - p0.x;
         const dy = p1.y - p0.y;
         const steps = Math.max(Math.abs(dx), Math.abs(dy)) / 2;
-        //console.log(steps);
+
         for (let j = 0; j < steps; j++) {
             coords.push({
                 x: p0.x + (dx * j) / steps,
@@ -66,7 +72,7 @@ function createCoords(points) {
             });
         }
     }
-    //console.log(coords);
+
     return coords;
 }
 
@@ -104,10 +110,12 @@ function drawDot(ctx, coords, index) {
 function animate(points, coords, index, ctx) {
     if (index === coords.length) {
         drawTriangle(ctx, points);
+
         return;
     }
 
     drawDot(ctx, coords, index);
+
     requestAnimationFrame(animate.bind(null, points, coords, index + 1, ctx));
 }
 
@@ -121,6 +129,7 @@ function toggleSet(radio) {
     }
 
     let template = "";
+
     switch (type) {
         case "3sides":
             template = `
@@ -205,6 +214,7 @@ function toggleSet(radio) {
         default:
             break;
     }
+
     document.getElementById("workplace_place").innerHTML = template;
 }
 
@@ -213,7 +223,7 @@ btn.onclick = () => {
     ctx.shadowColor = "transparent";
 
     const type = document.querySelector("fieldset").id;
-    //console.log(type);
+
     switch (type) {
         case "3sides":
             animation3sides(ctx);
@@ -247,11 +257,12 @@ btn.onclick = () => {
 function findCenteredPoints(points){
     const maxPoints = findMaxPoints(points);
     const minPoints = findMinPoints(points);
-    //console.log(maxPoints, minPoints);
+
     const toCenter = {
         x: (maxPoints.x - minPoints.x) / 2,
         y: (maxPoints.y - minPoints.y) / 2,
     };
+
     return [
         {
             x: Math.floor(points[0].x - toCenter.x),
@@ -298,6 +309,7 @@ function reduction(a, b, c) {
         b /= 2;
         c /= 2;
     }
+
     return [a, b, c];
 }
 
@@ -315,7 +327,8 @@ function animation3sides(ctx) {
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
         document.getElementById("sideC").value = '';
-        return 
+
+        return;
     }
 
     const reducedValues = reduction(a, b, c);
@@ -364,6 +377,7 @@ function animation2sidesAndAngle(ctx) {
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
         document.getElementById("angleAB").value = '';
+
         return;
     }
 
@@ -372,6 +386,7 @@ function animation2sidesAndAngle(ctx) {
 
     if (c > MAX_VALUE || c < MIN_VALUE) {
         alertCalculation(c);
+
         return;
     }
 
@@ -416,6 +431,7 @@ function animation2anglesAndSide(ctx){
         document.getElementById("angleA").value = '';
         document.getElementById("angleB").value = '';
         document.getElementById("sideAB").value = '';
+
         return;
     }
 
@@ -425,6 +441,7 @@ function animation2anglesAndSide(ctx){
 
     if (b > MAX_VALUE || b < MIN_VALUE) {
         alertCalculation(b);
+
         return;
     }
 
@@ -434,6 +451,7 @@ function animation2anglesAndSide(ctx){
 
     if (c > MAX_VALUE || c < MIN_VALUE) {
         alertCalculation(c);
+
         return;
     }
 
@@ -478,6 +496,7 @@ function animationHeightAnd2sides(ctx){
         document.getElementById("height").value = '';
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
+
         return; 
     }
     
@@ -485,6 +504,7 @@ function animationHeightAnd2sides(ctx){
 
     if (c > MAX_VALUE || c < MIN_VALUE) {
         alertCalculation(c);
+
         return;
     }
 
@@ -534,6 +554,7 @@ function animationMedianAnd2sides(ctx) {
         document.getElementById("median").value = '';
         document.getElementById("sideB").value = '';
         document.getElementById("sideC").value = '';
+
         return;
     }
     
@@ -541,6 +562,7 @@ function animationMedianAnd2sides(ctx) {
 
     if (a > MAX_VALUE || a < MIN_VALUE) {
         alertCalculation(a);
+
         return;
     }
 
@@ -589,6 +611,7 @@ function animationBisectorAnd2sides(ctx) {
         document.getElementById("bisector").value = '';
         document.getElementById("sideB").value = '';
         document.getElementById("sideC").value = '';
+
         return;
     }
     
@@ -596,6 +619,7 @@ function animationBisectorAnd2sides(ctx) {
 
     if (a > MAX_VALUE || a < MIN_VALUE) {
         alertCalculation(a);
+
         return;
     }
 
@@ -645,6 +669,7 @@ function animationRadiusAnd2angles(ctx) {
         document.getElementById("radius").value = '';
         document.getElementById("angleA").value = '';
         document.getElementById("angleB").value = '';
+
         return; 
     }
     
@@ -655,6 +680,7 @@ function animationRadiusAnd2angles(ctx) {
 
     if (a > MAX_VALUE || a < MIN_VALUE) {
         alertCalculation(a);
+
         return;
     }
 
@@ -662,6 +688,7 @@ function animationRadiusAnd2angles(ctx) {
 
     if (b > MAX_VALUE || b < MIN_VALUE) {
         alertCalculation(b);
+
         return;
     }
 
@@ -671,6 +698,7 @@ function animationRadiusAnd2angles(ctx) {
 
     if (c > MAX_VALUE || c < MIN_VALUE) {
         alertCalculation(c);
+
         return;
     }
 
@@ -714,6 +742,7 @@ function animationRadiusAnd2sides(ctx) {
         document.getElementById("radius").value = '';
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
+
         return;
     }
     
@@ -724,6 +753,7 @@ function animationRadiusAnd2sides(ctx) {
 
     if (c > MAX_VALUE || c < MIN_VALUE) {
         alertCalculation(c);
+        
         return;
     }
 
