@@ -329,11 +329,11 @@ function isTriangleExist(A, B, C) {
 }
 
 function alertValue() {
-    alert("Введите корректные численные значения! В диапозоне (0, 100_000)!");
+    alert("Введите корректные численные значения! В диапозоне (0; 100000) для стороны и в диапозоне (0; 180) для угла!");
 }
 
 function alertCalculation(value) {
-    alert("Подсчитанные числа для треугольника вне диапозона (0, 100_000)! Одна из сторон равна " + Math.floor(value) + "!");
+    alert("Подсчитанные числа для треугольника вне диапозона (0; 100000)! Одна из сторон равна " + Math.floor(value) + "!");
 }
 
 function alertTriangle(){
@@ -529,7 +529,7 @@ function animationHeightAnd2sides(ctx){
     const b = +document.getElementById("sideB").value;
 
     if (!isValidHeightAnd2sides(height, a, b)) {
-        alert("Введите корректные численные значения! В диапозоне (0, 100_000)! А также проверьте значения, высота не должна быть > или = любой из сторон!");
+        alert("Введите корректные численные значения! В диапозоне (0; 100000)! А также проверьте значения, высота не должна быть > или = любой из сторон!");
         document.getElementById("height").value = '';
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
@@ -587,7 +587,7 @@ function animationMedianAnd2sides(ctx) {
     const c = +document.getElementById("sideC").value;
 
     if (!isValidMedianAnd2sides(median, b, c)) {
-        alert("Введите корректные численные значения! В диапозоне (0, 100_000)! А также проверьте значения, медиана не должна быть > или = любой из сторон!");
+        alert("Введите корректные численные значения! В диапозоне (0; 100000)! А также проверьте значения, медиана не должна быть > или = любой из сторон!");
         document.getElementById("median").value = '';
         document.getElementById("sideB").value = '';
         document.getElementById("sideC").value = '';
@@ -644,7 +644,7 @@ function animationBisectorAnd2sides(ctx) {
     const c = +document.getElementById("sideC").value;
 
     if (!isValidBisectorAnd2sides(bisector, b, c)) {
-        alert("Введите корректные численные значения! В диапозоне (0, 100_000)! А также проверьте значения, биссектриса не должна быть > или = любой из сторон!");
+        alert("Введите корректные численные значения! В диапозоне (0; 100000)! А также проверьте значения, биссектриса не должна быть > или = любой из сторон!");
         document.getElementById("bisector").value = '';
         document.getElementById("sideB").value = '';
         document.getElementById("sideC").value = '';
@@ -775,7 +775,7 @@ function animationRadiusAnd2sides(ctx) {
     const b = +document.getElementById("sideB").value;
     
     if (!isValidRadiusAnd2sides(radius, a, b)) {
-        alert("Введите корректные численные значения! В диапозоне (0, 100_000)! a & b <= 2 * radius!");
+        alert("Введите корректные численные значения! В диапозоне (0; 100000)! a & b <= 2 * radius!");
         document.getElementById("radius").value = '';
         document.getElementById("sideA").value = '';
         document.getElementById("sideB").value = '';
