@@ -11,6 +11,18 @@ const MEDIA_WIDTH = 800;
 const canvas = document.getElementById("plot");
 const ctx = canvas.getContext("2d");
 
+if (window.innerWidth < MEDIA_WIDTH) {
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.width = DPI_WIDTH;
+    canvas.height = DPI_HEIGHT;
+} else {
+    canvas.style.width = WIDTH + "px";
+    canvas.style.height = HEIGHT + "px";
+    canvas.width = DPI_WIDTH;
+    canvas.height = DPI_HEIGHT;
+}
+
 window.addEventListener('resize', function(){
     if (window.innerWidth < MEDIA_WIDTH) {
         canvas.style.width = "100%";
