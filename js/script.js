@@ -117,11 +117,18 @@ function drawTriangle(ctx, points) {
     ctx.strokeStyle = "#4A495D";
     ctx.lineCap = "round";
     ctx.lineWidth = 4;
+    ctx.font = '50px serif';
 
     ctx.beginPath();
     ctx.moveTo(points[0].x, points[0].y);
+    ctx.fillStyle = "#000";
+    ctx.fillText('A', points[0].x + 20, points[0].y + 10);
     ctx.lineTo(points[1].x, points[1].y);
+    ctx.fillStyle = "#000";
+    ctx.fillText('B', points[1].x - 50, points[1].y + 10);
     ctx.lineTo(points[2].x, points[2].y);
+    ctx.fillStyle = "#000";
+    ctx.fillText('C', points[2].x - 15, points[2].y - 15);
     ctx.lineTo(points[0].x, points[0].y);
     ctx.closePath();
 
@@ -171,9 +178,9 @@ function toggleSet(radio) {
         case "3sides":
             template = `
             <fieldset id="3sides" class="workplace__inputs">
-                <input type="text" id="sideA" placeholder="A ∈ (0; 100000)"><br>
-                <input type="text" id="sideB" placeholder="B ∈ (0; 100000)"><br>
-                <input type="text" id="sideC" placeholder="C ∈ (0; 100000)"><br>
+                <input type="text" id="sideA" placeholder="AB ∈ (0; 100000)"><br>
+                <input type="text" id="sideB" placeholder="BC ∈ (0; 100000)"><br>
+                <input type="text" id="sideC" placeholder="CA ∈ (0; 100000)"><br>
             </fieldset>
             `
             ;
@@ -181,8 +188,8 @@ function toggleSet(radio) {
         case "2sides&angle":
             template = `
             <fieldset id="2sides&angle" class="workplace__inputs">
-                <input type="text" id="sideA" placeholder="A ∈ (0; 100000)"><br>
-                <input type="text" id="sideB" placeholder="B ∈ (0; 100000)"><br>
+                <input type="text" id="sideA" placeholder="AB ∈ (0; 100000)"><br>
+                <input type="text" id="sideB" placeholder="BC ∈ (0; 100000)"><br>
                 <input type="text" id="angleAB" placeholder="α ∈ (0; 180)"><br>
             </fieldset>
             `
@@ -193,7 +200,7 @@ function toggleSet(radio) {
             <fieldset id="2angles&side" class="workplace__inputs">
                 <input type="text" id="angleA" placeholder="α ∈ (0; 180)"><br>
                 <input type="text" id="angleB" placeholder="β ∈ (0; 180)"><br>
-                <input type="text" id="sideAB" placeholder="C ∈ (0; 100000)"><br>
+                <input type="text" id="sideAB" placeholder="CA ∈ (0; 100000)"><br>
             </fieldset>
             `
             ;
@@ -202,8 +209,8 @@ function toggleSet(radio) {
             template = `
             <fieldset id="height&2sides" class="workplace__inputs">
                 <input type="text" id="height" placeholder="h ∈ (0; 100000)"><br>
-                <input type="text" id="sideA" placeholder="A ∈ (0; 100000)"><br>
-                <input type="text" id="sideB" placeholder="B ∈ (0; 100000)"><br>
+                <input type="text" id="sideA" placeholder="AB ∈ (0; 100000)"><br>
+                <input type="text" id="sideB" placeholder="BC ∈ (0; 100000)"><br>
             </fieldset>
             `
             ;
@@ -212,8 +219,8 @@ function toggleSet(radio) {
             template = `
             <fieldset id="median&2sides" class="workplace__inputs">
                 <input type="text" id="median" placeholder="m ∈ (0; 100000)"><br>
-                <input type="text" id="sideB" placeholder="B ∈ (0; 100000)"><br>
-                <input type="text" id="sideC" placeholder="C ∈ (0; 100000)"><br>
+                <input type="text" id="sideB" placeholder="BC ∈ (0; 100000)"><br>
+                <input type="text" id="sideC" placeholder="CA ∈ (0; 100000)"><br>
             </fieldset>
             `
             ;
@@ -222,8 +229,8 @@ function toggleSet(radio) {
             template = `
             <fieldset id="bisector&2sides" class="workplace__inputs">
                 <input type="text" id="bisector" placeholder="l ∈ (0; 100000)"><br>
-                <input type="text" id="sideB" placeholder="B ∈ (0; 100000)"><br>
-                <input type="text" id="sideC" placeholder="C ∈ (0; 100000)"><br>
+                <input type="text" id="sideB" placeholder="BC ∈ (0; 100000)"><br>
+                <input type="text" id="sideC" placeholder="CA ∈ (0; 100000)"><br>
             </fieldset>
             `
             ;
@@ -242,8 +249,8 @@ function toggleSet(radio) {
             template = `
             <fieldset id="radius&2sides" class="workplace__inputs">
                 <input type="text" id="radius" placeholder="R ∈ (0; 100000)"><br>
-                <input type="text" id="sideA" placeholder="A ∈ (0; 100000)"><br>
-                <input type="text" id="sideB" placeholder="B ∈ (0; 100000)"><br>
+                <input type="text" id="sideA" placeholder="AB ∈ (0; 100000)"><br>
+                <input type="text" id="sideB" placeholder="BC ∈ (0; 100000)"><br>
             </fieldset>
             `
             ;
